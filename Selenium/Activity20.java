@@ -14,7 +14,7 @@ public class Activity20 {
         WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://v1.training-support.net/selenium/tab-opener");
 
-        driver.
+        driver.quit();
 
 
     }
