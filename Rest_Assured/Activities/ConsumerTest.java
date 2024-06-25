@@ -25,10 +25,10 @@ public class ConsumerTest {
     public RequestResponsePact createPact(PactDslWithProvider builder) {
         headers.put("Content-Type", "application/json");
         DslPart reqResBody = new PactDslJsonBody()
-                .numberType("id", 123)
-                .stringType("firstName", "Rashmi")
-                .stringType("lastName", "SMurthy")
-                .stringType("email", "rashmi.psj@ibm.com");
+                .numberType("id", 12345)
+                .stringType("firstName", "Sudheer")
+                .stringType("lastName", "Kumar")
+                .stringType("email", "SudheerPydikalva@gmail.com");
 
         return builder.given("POST Request")
                 .uponReceiving("A request to create a user")
@@ -47,10 +47,10 @@ public class ConsumerTest {
     @PactTestFor(providerName = "UserProvider", port = "8282")
     public void postReqestTest() {
         Map<String, Object> reqBody = new HashMap<>();
-        reqBody.put("id",123);
-        reqBody.put("firstName","Rashmi");
-        reqBody.put("lastName","SMurthy");
-        reqBody.put("email","rashmi.psj@ibm.com");
+        reqBody.put("id",12345);
+        reqBody.put("firstName","Sudheer");
+        reqBody.put("lastName","Kumar");
+        reqBody.put("email","SudheerPydikalva@gmail.com");
 
         given().baseUri("http://localhost:8282/api/users").headers(headers).body(reqBody).log().all().
                 when().post().then().statusCode(201).body("email",equalTo("rashmi.psj@ibm.com")).log().all();
