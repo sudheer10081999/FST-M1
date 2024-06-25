@@ -46,8 +46,8 @@ public class Activity3 {
     public Object[][] petInfoProvider() {
         // Setting parameters to pass to test case
         Object[][] testData = new Object[][] {
-                { 77232, "Riley", "alive" },
-                { 77233, "Hansel", "alive" }
+                { 74232, "Riley", "alive" },
+                { 74233, "Hansel", "alive" }
         };
         return testData;
     }
@@ -55,12 +55,12 @@ public class Activity3 {
     @Test(priority=1)
     // Test case using a DataProvider
     public void addPets() {
-        String reqBody = "{\"id\": 77232, \"name\": \"Riley\", \"status\": \"alive\"}";
+        String reqBody = "{\"id\": 74232, \"name\": \"Riley\", \"status\": \"alive\"}";
         Response response = given().spec(requestSpec) // Use requestSpec
                 .body(reqBody) // Send request body
                 .when().post(); // Send POST request
 
-        reqBody = "{\"id\": 77233, \"name\": \"Hansel\", \"status\": \"alive\"}";
+        reqBody = "{\"id\": 74233, \"name\": \"Hansel\", \"status\": \"alive\"}";
         response = given().spec(requestSpec) // Use requestSpec
                 .body(reqBody) // Send request body
                 .when().post(); // Send POST request
