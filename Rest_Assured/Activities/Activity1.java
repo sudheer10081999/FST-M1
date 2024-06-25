@@ -16,7 +16,7 @@ public class Activity1 {
     public void addNewPet() {
         // Create JSON request
         String reqBody = "{"
-                + "\"id\": 77232,"
+                + "\"id\": 74232,"
                 + "\"name\": \"Riley\","
                 + " \"status\": \"alive\""
                 + "}";
@@ -27,7 +27,7 @@ public class Activity1 {
                         .when().post(ROOT_URI); // Send POST request
 
         // Assertion
-        response.then().body("id", equalTo(77232));
+        response.then().body("id", equalTo(74232));
         response.then().body("name", equalTo("Riley"));
         response.then().body("status", equalTo("alive"));
     }
@@ -36,11 +36,11 @@ public class Activity1 {
     public void getPetInfo() {
         Response response =
                 given().contentType(ContentType.JSON) // Set headers
-                        .when().pathParam("petId", "77232") // Set path parameter
+                        .when().pathParam("petId", "74232") // Set path parameter
                         .get(ROOT_URI + "/{petId}"); // Send GET request
 
         // Assertion
-        response.then().body("id", equalTo(77232));
+        response.then().body("id", equalTo(74232));
         response.then().body("name", equalTo("Riley"));
         response.then().body("status", equalTo("alive"));
     }
@@ -49,7 +49,7 @@ public class Activity1 {
     public void deletePet() {
         Response response =
                 given().contentType(ContentType.JSON) // Set headers
-                        .when().pathParam("petId", "77232") // Set path parameter
+                        .when().pathParam("petId", "74232") // Set path parameter
                         .delete(ROOT_URI + "/{petId}"); // Send DELETE request
 
         // Assertion
