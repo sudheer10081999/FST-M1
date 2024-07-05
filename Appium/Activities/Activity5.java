@@ -1,18 +1,6 @@
-package activities;
+
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import java.net.MalformedURLException;
-import io.appium.java_client.android.AndroidDriver;
-import java.net.URL;
-import java.time.Duration;
 
 public class Activity5 {
     // Driver Declaration
