@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="9237a545-a082-4bd5-8b60-778d33931332" created="3.30.0" activeEnvironment="Default environment" name="Activity6" updated="3.30.0 2022-03-16T13:04:41Z" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="1266a395-8657-4c5d-9558-aa33c77373c7" created="3.30.0" activeEnvironment="Default environment" name="Activity4" resourceRoot="" updated="3.30.0 2022-03-16T13:04:41Z" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:interface xsi:type="con:RestService" id="4ba1fd9d-8c77-47a9-b19a-5d655635afc3" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://ipwhois.app" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:RestService" id="e8ca28a7-7082-4c69-a21c-4c700d06ce25" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://ipwhois.app" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:definitionCache type="TEXT" rootPart=""/>
     <con:endpoints>
       <con:endpoint>http://ipwhois.app</con:endpoint>
     </con:endpoints>
-    <con:resource name="IP" path="/json/{IP}" id="426b4c68-7272-4954-8229-fc003d764aee">
+    <con:resource name="IP" path="/json/{IP}" id="bea91d4c-2531-40bb-bd05-d3bc981bcaac">
       <con:settings/>
       <con:parameters/>
-      <con:method name="IP" id="cedcde3f-f3a9-4542-bbd3-af89c110bea6" method="GET">
+      <con:method name="IP" id="23b63fd4-c9fb-4b8c-9a8c-67977f7f64c1" method="GET">
         <con:settings/>
         <con:parameters>
           <con:parameter required="true">
@@ -26,18 +26,21 @@
           <con:mediaType>application/json; charset=utf-8</con:mediaType>
           <con:status>200</con:status>
           <con:params/>
-          <con:element xmlns:ns="http://ipwhois.app/json/195.149.205.164">ns:Response</con:element>
+          <con:element xmlns:ip="http://ipwhois.app/json/IP">ip:Response</con:element>
         </con:representation>
-        <con:request name="Request 1" id="8755dd18-1290-4302-9ec5-83fbad042c60" mediaType="application/json">
-          <con:settings/>
+        <con:request name="Request 1" id="56198a08-5165-4b34-ba53-aba3210b8fd4" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
           <con:endpoint>http://ipwhois.app</con:endpoint>
           <con:request/>
+          <con:originalUri>http://ipwhois.app/json/IP</con:originalUri>
           <con:credentials>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters>
-            <con:entry key="IP" value="IP"/>
+            <con:entry key="IP" value="${DataSource#address}"/>
           </con:parameters>
           <con:parameterOrder>
             <con:entry>IP</con:entry>
@@ -46,67 +49,49 @@
       </con:method>
     </con:resource>
   </con:interface>
-  <con:testSuite id="a8f81bcd-3811-4f17-aee1-1b61a9d1b6c4" name="http://ipwhois.app Test Suite">
+  <con:testSuite id="59572317-ed28-4530-a94f-0d8bdf119662" name="http://ipwhois.app Test Suite">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="29da424e-6b2b-4f84-8158-c87d914f9e51" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="http://ipwhois.app Test Case 1" searchProperties="true" timeout="0">
+    <con:testCase id="3c3f85db-6f85-4f9b-9a63-449014631ff9" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="http://ipwhois.app Test Case 1" searchProperties="true" timeout="0">
       <con:settings/>
-      <con:testStep type="jdbc" name="JDBC Request" id="c3d0b29f-ab69-4450-b62b-5295a4d0c16e">
-        <con:settings>
-          <con:setting id="prettyPrintResponse">true</con:setting>
-        </con:settings>
-        <con:config xsi:type="con:JdbcRequestTestStep" convertColumnNamesToUpperCase="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:dbConnectionName>Connection</con:dbConnectionName>
-          <con:driver>com.mysql.jdbc.Driver</con:driver>
-          <con:connectionString>jdbc:mysql://remotemysql.com:3306/CGpfjlbstY?user=CGpfjlbstY&amp;password=PASS_VALUE</con:connectionString>
-          <con:password>Sav3dVDTJ4</con:password>
-          <con:connectionProperties/>
-          <con:query/>
-          <con:properties/>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="datasource" name="Data Source" id="6dec703f-80a6-48cc-8334-0d9f85dbb932">
+      <con:testStep type="datasource" name="Data Source" id="e1b58d6a-bdd4-43dc-87d1-c2e3a81e9577">
         <con:settings/>
         <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:dataSource type="Data Generator">
+          <con:dataSource type="File">
             <con:configuration>
-              <generatedDataCount>10</generatedDataCount>
-              <generatorsTotalNumber>1</generatorsTotalNumber>
-              <lastSelectedProperty>0</lastSelectedProperty>
-              <GeneratorType0>COMP</GeneratorType0>
-              <PropertyName0>IP</PropertyName0>
-              <repetitionCountIP>0</repetitionCountIP>
-              <repeatValuesIP>false</repeatValuesIP>
-              <ComputerAddressTypeIP>IPv4</ComputerAddressTypeIP>
-              <escapeSpaceSequence/>
+              <fileName>C:/Users/000E96744/Desktop/dataSource.txt</fileName>
+              <separator>,</separator>
+              <trim>false</trim>
+              <charset>Cp1252</charset>
+              <quotedValues>false</quotedValues>
             </con:configuration>
           </con:dataSource>
-          <con:shared>false</con:shared>
-          <con:restartShared>false</con:restartShared>
+          <con:shared>true</con:shared>
+          <con:restartShared>true</con:restartShared>
           <con:property>IP</con:property>
           <con:restartOnRun>true</con:restartOnRun>
         </con:config>
       </con:testStep>
-      <con:testStep type="restrequest" name="Request 1" id="d5fae89f-a5db-4e0b-995b-52094a58c303">
+      <con:testStep type="restrequest" name="Request 1" id="87960b6f-5a5b-4e83-9115-63eada861e73">
         <con:settings/>
         <con:config service="http://ipwhois.app" resourcePath="/json/{IP}" methodName="IP" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="Request 1" id="8755dd18-1290-4302-9ec5-83fbad042c60" mediaType="application/json">
+          <con:restRequest name="Request 1" id="56198a08-5165-4b34-ba53-aba3210b8fd4" mediaType="application/json">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
             <con:endpoint>http://ipwhois.app</con:endpoint>
             <con:request/>
-            <con:originalUri>http://ipwhois.app/json/195.149.205.164</con:originalUri>
-            <con:assertion type="Valid HTTP Status Codes" id="b7133c2b-5ade-4a6e-8644-99e2666f30d7" name="Valid HTTP Status Codes">
+            <con:originalUri>http://ipwhois.app/json/66.12.25.226</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="6425d0c7-86fe-467e-90ad-3290fed31ddd" name="Valid HTTP Status Codes">
               <con:settings/>
               <con:configuration>
                 <codes>200</codes>
               </con:configuration>
             </con:assertion>
-            <con:assertion type="JsonPath Match" id="8e05a24f-c57a-4741-a5c2-48ccd20efe3e" name="JSONPath Match">
+            <con:assertion type="JsonPath Match" id="a685281e-0220-4ec4-a0c0-5b3900b38e06" name="JSONPath Match">
               <con:configuration>
                 <path>$['country']</path>
-                <content>"Russia"</content>
+                <content>"United States"</content>
                 <allowWildcards>false</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -126,7 +111,7 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="datasourceloop" name="Data Source Loop" id="987020ee-a857-4423-b5d4-86cdd746f411">
+      <con:testStep type="datasourceloop" name="Data Source Loop" id="5f684f6b-116f-4a32-8ee0-c39887164f6e">
         <con:settings/>
         <con:config>
           <dataSourceStep>Data Source</dataSourceStep>
@@ -142,22 +127,18 @@
   </con:testSuite>
   <con:properties/>
   <con:wssContainer/>
-  <con:databaseConnectionContainer>
-    <con:databaseConnection>
-      <con:name>Connection</con:name>
-      <con:driver>com.mysql.jdbc.Driver</con:driver>
-      <con:connectionString>jdbc:mysql://remotemysql.com:3306/CGpfjlbstY?user=CGpfjlbstY&amp;password=PASS_VALUE</con:connectionString>
-      <con:password>Sav3dVDTJ4</con:password>
-      <con:connectionProperties/>
-    </con:databaseConnection>
-  </con:databaseConnectionContainer>
+  <con:databaseConnectionContainer/>
   <con:jmsConnectionContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
   <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
     <con:xmlTemplates/>
     <con:parameters/>
+    <con:parameters/>
   </con:reporting>
+  <con:reporting/>
   <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
     <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
 // This code is often used for adding custom authentication to ReadyAPI functional tests
